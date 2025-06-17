@@ -47,13 +47,13 @@ function App() {
           >
             {/* Main heading with animated gradient */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-dmsans font-light mb-8 md:mb-12 leading-tight tracking-tight animate-gradient-text">
-              <span className="block">AI That Works</span>
-              <span className="block">Where You Work</span>
+              <span className="block">AI That Moves</span>
+              <span className="block">with Your Business</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Our tools are engineered for real-world performance—bridging the gap between innovation and execution to help you automate, optimize, and scale.
+            Our AI Solutions are built for real business environments, bridging the gap between innovation and execution to help you automate, optimize, and scale intelligently.
             </p>
 
             {/* Scroll Indicator */}
