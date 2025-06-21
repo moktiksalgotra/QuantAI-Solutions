@@ -136,7 +136,7 @@ function App() {
                 </div>
                 <div className="relative">
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-purple-200 transition-all duration-300">
-                    SEE-Q – Analytics Assistant
+                    Quant - Query – Analytics Assistant
                   </h3>
                   <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                     From Natural Language to SQL & Insights — Instantly
