@@ -324,6 +324,42 @@ function App() {
                   </a>
                 </div>
               </motion.div>
+
+              {/* Seventh Card - WordCloud - Centered */}
+              <motion.div
+                variants={{
+                  hidden: { y: 40, opacity: 0 },
+                  visible: { y: 0, opacity: 1 }
+                }}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                initial="hidden"
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                className="group relative bg-gradient-to-br from-teal-900/40 to-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-teal-500/50 transition-all duration-300 flex flex-col items-center text-center md:col-start-2 lg:col-start-2"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative mb-4">
+                  <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/20 shadow-lg backdrop-blur-lg border border-white/20 group-hover:border-teal-500/30 transition-all duration-300">
+                    <svg className="w-10 h-10 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="relative">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:to-teal-200 transition-all duration-300">
+                    Cloud Sight – WordCloud Generator
+                  </h3>
+                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                    Transform Text Data into Beautiful Visual Word Clouds with AI Insights
+                  </p>
+                  <a href="https://cloud-sight.streamlit.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors group-hover:translate-x-1 duration-300">
+                    Explore 
+                    <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
