@@ -1,12 +1,8 @@
-import express from 'express';
-import jwt from 'jsonwebtoken';
-import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config({ path: '.env.local' });
 
