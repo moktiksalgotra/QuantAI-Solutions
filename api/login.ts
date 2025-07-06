@@ -4,9 +4,10 @@ import cookie from 'cookie';
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   if (req.method === 'OPTIONS') {
     res.status(200).end();
@@ -20,12 +21,23 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const { username, password } = req.body;
 
+    // Debug: Log environment variables (remove in production)
+    console.log('Environment check:', {
+      hasUsername: !!process.env.APP_USERNAME,
+      hasPassword: !!process.env.APP_PASSWORD,
+      hasJWTSecret: !!process.env.JWT_SECRET
+    });
+
     const APP_USERNAME = process.env.APP_USERNAME;
     const APP_PASSWORD = process.env.APP_PASSWORD;
     const JWT_SECRET = process.env.JWT_SECRET;
 
     if (!APP_USERNAME || !APP_PASSWORD || !JWT_SECRET) {
-      console.error('Missing environment variables');
+      console.error('Missing environment variables:', {
+        APP_USERNAME: !!APP_USERNAME,
+        APP_PASSWORD: !!APP_PASSWORD,
+        JWT_SECRET: !!JWT_SECRET
+      });
       return res.status(500).json({ message: 'Server configuration error' });
     }
 
@@ -34,12 +46,15 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
         expiresIn: '8h',
       });
 
+      // Determine if we're in production (Vercel) or development
+      const isProduction = process.env.VERCEL === '1';
+      
       res.setHeader(
         'Set-Cookie',
         cookie.serialize('auth_token', token, {
           httpOnly: true,
-          secure: true,
-          sameSite: 'strict',
+          secure: isProduction, // Only secure in production
+          sameSite: isProduction ? 'strict' : 'lax',
           maxAge: 60 * 60 * 8,
           path: '/',
         })
