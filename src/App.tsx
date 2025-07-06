@@ -1,8 +1,10 @@
 import './App.css'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import Login from './components/Login'
 
-function App() {
+// The original App component is renamed to ProtectedContent
+function ProtectedContent() {
   const [showComingSoon, setShowComingSoon] = useState(false);
 
   const handleVoiceOpsClick = (e: React.MouseEvent) => {
@@ -369,31 +371,63 @@ function App() {
       <AnimatePresence>
         {showComingSoon && (
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
           >
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="relative text-white px-10 py-6 rounded-2xl shadow-2xl text-2xl font-bold flex items-center gap-3 border border-white/20 bg-white/10 backdrop-blur-md overflow-hidden"
-            >
-              {/* Gradient overlay for vibrancy */}
-              <span className="absolute inset-0 pointer-events-none rounded-2xl bg-gradient-to-br from-purple-700/40 to-purple-400/30 opacity-70" />
-              <span className="relative z-10 flex items-center gap-3">
-                <svg className="w-8 h-8 text-yellow-300 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
-                </svg>
-                Coming Soon
-              </span>
-            </motion.div>
+            <div className="bg-gray-800 p-8 rounded-lg text-white text-center">
+              <h3 className="text-2xl font-bold mb-4">Coming Soon</h3>
+              <p>We're putting the final touches on VoiceOps. Stay tuned!</p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   )
+}
+
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch('/api/auth-check');
+        if (response.ok) {
+          const data = await response.json();
+          setIsAuthenticated(data.isAuthenticated);
+        } else {
+          setIsAuthenticated(false);
+        }
+      } catch (error) {
+        setIsAuthenticated(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  return isAuthenticated ? (
+    <ProtectedContent />
+  ) : (
+    <Login onLoginSuccess={handleLoginSuccess} />
+  );
 }
 
 // Footer
