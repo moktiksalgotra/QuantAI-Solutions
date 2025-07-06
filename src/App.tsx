@@ -367,6 +367,9 @@ function ProtectedContent() {
         </div>
       </div>
 
+      {/* Footer - Only shown when authenticated */}
+      <Footer />
+
       {/* Coming Soon Modal/Animation */}
       <AnimatePresence>
         {showComingSoon && (
@@ -455,10 +458,5 @@ function Footer() {
 }
 
 export default function MainApp() {
-  return (
-    <>
-      <App />
-      <Footer />
-    </>
-  )
+  return <App />
 }
