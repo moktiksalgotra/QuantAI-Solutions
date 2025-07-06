@@ -1,4 +1,6 @@
-export default function handler(req: any, res: any) {
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+
+export default function handler(req: VercelRequest, res: VercelResponse) {
   const APP_USERNAME = process.env.APP_USERNAME;
   const APP_PASSWORD = process.env.APP_PASSWORD;
   const JWT_SECRET = process.env.JWT_SECRET;
