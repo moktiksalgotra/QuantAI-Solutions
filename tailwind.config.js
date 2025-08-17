@@ -7,8 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // Or any other font you choose from Google Fonts
-        dmsans: ['DM Sans', 'sans-serif'],
+        sans: ['Lato', 'sans-serif'],
       },
     },
   },

@@ -1,10 +1,8 @@
 import './App.css'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
-import Login from './components/Login'
+import { useState } from 'react'
 
-// The original App component is renamed to ProtectedContent
-function ProtectedContent() {
+function App() {
   const [showComingSoon, setShowComingSoon] = useState(false);
 
   const handleVoiceOpsClick = (e: React.MouseEvent) => {
@@ -48,7 +46,7 @@ function ProtectedContent() {
             transition={{ duration: 0.8 }}
           >
             {/* Main heading with animated gradient */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-dmsans font-light mb-8 md:mb-12 leading-tight tracking-tight animate-gradient-text">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 md:mb-12 leading-tight tracking-tight animate-gradient-text">
               <span className="block">AI That Moves</span>
               <span className="block">with Your Business</span>
             </h1>
@@ -243,12 +241,12 @@ function ProtectedContent() {
                 </div>
                 <div className="relative">
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-200 transition-all duration-300">
-                    Scraper Master – Advanced Web Scraping
+                    Scrapeazon – Advanced Web Scraping
                   </h3>
                   <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                     Extract, Structure, and Analyze Web Data with Zero Code
                   </p>
-                  <a href="https://scraper-master.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors group-hover:translate-x-1 duration-300">
+                  <a href="https://scrapeazon.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors group-hover:translate-x-1 duration-300">
                     Explore 
                     <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -282,7 +280,7 @@ function ProtectedContent() {
                   <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                     Scan, Identify, and Understand Food with Computer Vision Intelligence
                   </p>
-                  <a href="https://food-analysis-i8qi.onrender.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors group-hover:translate-x-1 duration-300">
+                  <a href="https://nutriscan-chfo.onrender.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors group-hover:translate-x-1 duration-300">
                     Explore 
                     <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -367,7 +365,7 @@ function ProtectedContent() {
         </div>
       </div>
 
-      {/* Footer - Only shown when authenticated */}
+      {/* Footer */}
       <Footer />
 
       {/* Coming Soon Modal/Animation */}
@@ -390,49 +388,6 @@ function ProtectedContent() {
   )
 }
 
-function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await fetch('/api/auth-check');
-        if (response.ok) {
-          const data = await response.json();
-          setIsAuthenticated(data.isAuthenticated);
-        } else {
-          setIsAuthenticated(false);
-        }
-      } catch (error) {
-        setIsAuthenticated(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    checkAuth();
-  }, []);
-
-  const handleLoginSuccess = () => {
-    setIsAuthenticated(true);
-  };
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
-  return isAuthenticated ? (
-    <ProtectedContent />
-  ) : (
-    <Login onLoginSuccess={handleLoginSuccess} />
-  );
-}
-
 // Footer
 function Footer() {
   return (
@@ -441,7 +396,7 @@ function Footer() {
         <h3 className="text-xl font-bold text-white mb-4">How to Reach Us</h3>
         <div className="mb-2">
           <span className="font-semibold text-white">Phone</span><br />
-          <a href="tel:+64272115129" className="text-white hover:text-purple-400 transition font-medium">+64 272115129</a>
+          <a href="tel:+64272115129" className="text-white hover:text-purple-400 transition font-medium">+64 273641435</a>
         </div>
         <div className="mb-2 text-base text-white">Monday - Friday, 9AM - 6PM NZT</div>
         <div className="mb-2">
@@ -457,6 +412,4 @@ function Footer() {
   )
 }
 
-export default function MainApp() {
-  return <App />
-}
+export default App
