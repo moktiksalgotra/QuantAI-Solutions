@@ -116,7 +116,8 @@ function App() {
 
             {/* Grid Container */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* First Card */}
+              {/* Row 1 - Core Tools */}
+              {/* Quant - Query */}
               <motion.div
                 variants={{
                   hidden: { y: 40, opacity: 0 },
@@ -150,7 +151,7 @@ function App() {
                 </div>
               </motion.div>
 
-              {/* Second Card */}
+              {/* Q-Roster */}
               <motion.div
                 variants={{
                   hidden: { y: 40, opacity: 0 },
@@ -184,7 +185,7 @@ function App() {
                 </div>
               </motion.div>
 
-              {/* Third Card */}
+              {/* VoiceOps */}
               <motion.div
                 variants={{
                   hidden: { y: 40, opacity: 0 },
@@ -221,7 +222,8 @@ function App() {
                 </div>
               </motion.div>
 
-              {/* Fourth Card */}
+              {/* Row 2 - Web & Car tools */}
+              {/* Scrapeazon */}
               <motion.div
                 variants={{
                   hidden: { y: 40, opacity: 0 },
@@ -255,7 +257,7 @@ function App() {
                 </div>
               </motion.div>
 
-              {/* New Eighth Card - Car Finder (moved below Scrapeazon) */}
+              {/* Car Finder */}
               <motion.div
                 variants={{
                   hidden: { y: 40, opacity: 0 },
@@ -270,7 +272,6 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
                 <div className="relative mb-4">
                   <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/20 shadow-lg backdrop-blur-lg border border-white/20 group-hover:border-indigo-500/30 transition-all duration-300">
-                    {/* Use existing asset if present otherwise render SVG car icon */}
                     <img src="/car.png" alt="Car Finder Icon" className="w-10 h-10 object-contain" onError={(e:any)=>{e.currentTarget.onerror=null; e.currentTarget.outerHTML = `<svg class=\"w-10 h-10 text-indigo-400\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M3 13l1-2m0 0l1-2m-2 4h18m-2 0l1 2m0-2l1-2M7 21h10a2 2 0 002-2v-5H5v5a2 2 0 002 2zM7 13V9a4 4 0 018 0v4\" /></svg>`}} />
                   </div>
                 </div>
@@ -290,7 +291,44 @@ function App() {
                 </div>
               </motion.div>
 
-              {/* Fifth Card */}
+              {/* Skill Assessment Folder */}
+              <motion.div
+                variants={{
+                  hidden: { y: 40, opacity: 0 },
+                  visible: { y: 0, opacity: 1 }
+                }}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                initial="hidden"
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                className="group relative bg-gradient-to-br from-rose-900/40 to-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-rose-500/50 transition-all duration-300 flex flex-col items-center text-center"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative mb-4">
+                  <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-rose-500/20 to-rose-600/20 shadow-lg backdrop-blur-lg border border-white/20 group-hover:border-rose-500/30 transition-all duration-300">
+                    <svg className="w-10 h-10 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="relative">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-rose-400 group-hover:to-rose-200 transition-all duration-300">
+                    Skill Assessment Platform
+                  </h3>
+                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                    AI-driven skill assessment and reporting platform
+                  </p>
+                  <a href="https://skills-v2-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors group-hover:translate-x-1 duration-300">
+                    Explore 
+                    <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Row 3 - Vision & Analytics */}
+              {/* NutriScan */}
               <motion.div
                 variants={{
                   hidden: { y: 40, opacity: 0 },
@@ -324,7 +362,7 @@ function App() {
                 </div>
               </motion.div>
 
-              {/* Sixth Card - Video Detection */}
+              {/* Video Detection */}
               <motion.div
                 variants={{
                   hidden: { y: 40, opacity: 0 },
@@ -360,7 +398,7 @@ function App() {
                 </div>
               </motion.div>
 
-              {/* Seventh Card - WordCloud - Centered */}
+              {/* Cloud Sight */}
               <motion.div
                 variants={{
                   hidden: { y: 40, opacity: 0 },
@@ -370,7 +408,7 @@ function App() {
                 viewport={{ once: true, amount: 0.3 }}
                 initial="hidden"
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                className="group relative bg-gradient-to-br from-teal-900/40 to-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-teal-500/50 transition-all duration-300 flex flex-col items-center text-center md:col-start-2 lg:col-start-2"
+                className="group relative bg-gradient-to-br from-teal-900/40 to-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-teal-500/50 transition-all duration-300 flex flex-col items-center text-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
                 <div className="relative mb-4">
